@@ -49,6 +49,8 @@
         <option value="eur_to_usd">Euros to Dollars</option>
         <option value="leu_to_usd">Leu to Dollars</option>
         <option value="usd_to_leu">Dollars to Leu</option>
+        <option value="meter_to_feet">Meters to Feet</option>
+        <option value="feet_to_meter">Feet to Meters</option>
     </select>
     <br>
     <button onclick="convert()">Convert</button>
@@ -80,6 +82,14 @@
         return usd * 17.76;
     }
 
+    function meterToFeet(meter) {
+        return meter * 3.28084;
+    }
+
+    function feetToMeter(feet) {
+        return feet / 3.28084;
+    }
+
     function convert() {
         const value = parseFloat(document.getElementById('valueInput').value);
         const conversionType = document.getElementById('conversionType').value;
@@ -106,6 +116,12 @@
                     break;
                 case 'usd_to_leu':
                     result = `${value} dollars is equal to ${usdToLeu(value).toFixed(2)} leu`;
+                    break;
+                case 'meter_to_feet':
+                    result = `${value} meters is equal to ${meterToFeet(value).toFixed(2)} feet`;
+                    break;
+                case 'feet_to_meter':
+                    result = `${value} feet is equal to ${feetToMeter(value).toFixed(2)} meters`;
                     break;
             }
         }
