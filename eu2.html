@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American to European Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .converter {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .converter input, .converter select, .converter button {
+            font-size: 16px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .converter button {
+            background-color: lightblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="converter">
+    <h1>American to European Converter</h1>
+    <label for="valueInput">Enter the number:</label>
+    <input type="text" id="valueInput" placeholder="Enter value">
+    <br>
+    <label for="conversionType">Select conversion type:</label>
+    <select id="conversionType">
+        <option value="kg_to_lbs">Kilograms to Pounds</option>
+        <option value="lbs_to_kg">Pounds to Kilograms</option>
+        <option value="usd_to_eur">Dollars to Euros</option>
+        <option value="eur_to_usd">Euros to Dollars</option>
+        <option value="leu_to_usd">Leu to Dollars</option>
+        <option value="usd_to_leu">Dollars to Leu</option>
+    </select>
+    <br>
+    <button onclick="convert()">Convert</button>
+    <p id="result"></p>
+</div>
+
+<script>
+    function kgToLbs(kg) {
+        return kg * 2.20462;
+    }
+
+    function lbsToKg(lbs) {
+        return lbs / 2.20462;
+    }
+
+    function usdToEur(usd) {
+        return usd * 0.93;
+    }
+
+    function eurToUsd(eur) {
+        return eur / 0.93;
+    }
+
+    function leuToUsd(leu) {
+        return leu / 17.76;
+    }
+
+    function usdToLeu(usd) {
+        return usd * 17.76;
+    }
+
+    function convert() {
+        const value = parseFloat(document.getElementById('valueInput').value);
+        const conversionType = document.getElementById('conversionType').value;
+        let result = '';
+
+        if (isNaN(value)) {
+            result = 'Please enter a valid number';
+        } else {
+            switch (conversionType) {
+                case 'kg_to_lbs':
+                    result = `${value} kg is equal to ${kgToLbs(value).toFixed(2)} lbs`;
+                    break;
+                case 'lbs_to_kg':
+                    result = `${value} lbs is equal to ${lbsToKg(value).toFixed(2)} kg`;
+                    break;
+                case 'usd_to_eur':
+                    result = `${value} dollars is equal to ${usdToEur(value).toFixed(2)} euros`;
+                    break;
+                case 'eur_to_usd':
+                    result = `${value} euros is equal to ${eurToUsd(value).toFixed(2)} dollars`;
+                    break;
+                case 'leu_to_usd':
+                    result = `${value} leu is equal to ${leuToUsd(value).toFixed(2)} dollars`;
+                    break;
+                case 'usd_to_leu':
+                    result = `${value} dollars is equal to ${usdToLeu(value).toFixed(2)} leu`;
+                    break;
+            }
+        }
+
+        document.getElementById('result').textContent = result;
+    }
+</script>
+
+</body>
+</html>
