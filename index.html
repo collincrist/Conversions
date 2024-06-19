@@ -49,8 +49,10 @@
         <option value="eur_to_usd">Euros to Dollars</option>
         <option value="leu_to_usd">Leu to Dollars</option>
         <option value="usd_to_leu">Dollars to Leu</option>
-        <option value="meter_to_feet">Meters to Feet</option>
-        <option value="feet_to_meter">Feet to Meters</option>
+        <option value="mph_to_kmh">Miles per hour to Kilometers per hour</option>
+        <option value="kmh_to_mph">Kilometers per hour to Miles per hour</option>
+        <option value="celsius_to_fahrenheit">Celsius to Fahrenheit</option>
+        <option value="fahrenheit_to_celsius">Fahrenheit to Celsius</option>
     </select>
     <br>
     <button onclick="convert()">Convert</button>
@@ -82,12 +84,20 @@
         return usd * 17.76;
     }
 
-    function meterToFeet(meter) {
-        return meter * 3.28084;
+    function mphToKmh(mph) {
+        return mph * 1.60934;
     }
 
-    function feetToMeter(feet) {
-        return feet / 3.28084;
+    function kmhToMph(kmh) {
+        return kmh / 1.60934;
+    }
+
+    function celsiusToFahrenheit(celsius) {
+        return celsius * 9 / 5 + 32;
+    }
+
+    function fahrenheitToCelsius(fahrenheit) {
+        return (fahrenheit - 32) * 5 / 9;
     }
 
     function convert() {
@@ -117,12 +127,19 @@
                 case 'usd_to_leu':
                     result = `${value} dollars is equal to ${usdToLeu(value).toFixed(2)} leu`;
                     break;
-                case 'meter_to_feet':
-                    result = `${value} meters is equal to ${meterToFeet(value).toFixed(2)} feet`;
+                case 'mph_to_kmh':
+                    result = `${value} mph is equal to ${mphToKmh(value).toFixed(2)} km/h`;
                     break;
-                case 'feet_to_meter':
-                    result = `${value} feet is equal to ${feetToMeter(value).toFixed(2)} meters`;
+                case 'kmh_to_mph':
+                    result = `${value} km/h is equal to ${kmhToMph(value).toFixed(2)} mph`;
                     break;
+                case 'celsius_to_fahrenheit':
+                    result = `${value} °C is equal to ${celsiusToFahrenheit(value).toFixed(2)} °F`;
+                    break;
+                case 'fahrenheit_to_celsius':
+                    result = `${value} °F is equal to ${fahrenheitToCelsius(value).toFixed(2)} °C`;
+                    break;
+                    
             }
         }
 
